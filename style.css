@@ -7,7 +7,7 @@
 body {
   background-image: linear-gradient(to right, #85e7e4, rgb(244, 231, 241));
   background-repeat: repeat-y;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 body > section {
@@ -20,39 +20,93 @@ body > section {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 1rem;
+}
+
+.section_1 > section:first-child {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section_1 > section:last-child {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: clamp(2rem, 5vw, 4rem);
   word-spacing: 0.5rem;
   line-height: 1.5;
 }
 
+.animation3 {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 button {
   border-radius: 2rem;
-  padding: 1rem 3rem;
-  font-size: large;
+  padding: 1rem 2rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   background-color: rgb(216, 242, 232);
-  margin: 2rem;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 button:hover {
   opacity: 0.7;
 }
 
+.section_1 figure img {
+  max-width: 100%;
+  height: auto;
+  width: clamp(300px, 50vw, 500px);
+}
+
 .section_2 {
-  padding-inline: 10%;
+  padding: 2rem 5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
-  font-size: large;
+  gap: 3rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   text-align: justify;
-  line-height: 1.2;
+  line-height: 1.5;
+  flex-wrap: wrap;
+}
+
+.section_2 > section {
+  flex: 1;
+  min-width: 280px;
 }
 
 .section_2 section h3 {
   margin-bottom: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.section_2 figure {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  justify-content: center;
+}
+
+.section_2 figure img {
+  max-width: 100%;
+  height: auto;
+  width: clamp(300px, 40vw, 480px);
+  border-radius: 1rem;
 }
 
 .section_3 {
@@ -61,8 +115,13 @@ button:hover {
   justify-content: space-around;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 2rem 1rem;
   margin-top: 3rem;
+}
+
+.section_3 h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
 }
 
 .section_3_categories {
@@ -70,7 +129,15 @@ button:hover {
   flex-direction: row;
   justify-content: center;
   align-content: center;
-  gap: 5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.categories {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
 }
 
 .categories figure {
@@ -84,37 +151,80 @@ button:hover {
   gap: 2rem;
   border-top-right-radius: 3rem;
   border-bottom-left-radius: 3rem;
-  width: min-content;
+  height: 100%;
+  position: relative;
+  min-height: 400px;
 }
 
 .categories figure img {
   border-top-right-radius: 2rem;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
   position: absolute;
+  top: 2rem;
+}
+
+.categories figcaption {
+  margin-top: 220px;
+}
+
+.categories figcaption h4 {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  margin-bottom: 1rem;
+}
+
+.categories figcaption p {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.4;
 }
 
 .section_4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 3rem;
   text-align: justify;
-  font-size: larger;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   word-spacing: 0.2rem;
-  line-height: 1.2;
+  line-height: 1.5;
+  padding: 2rem 1rem;
+  flex-wrap: wrap;
+}
+
+.section_4 > section {
+  flex: 1;
+  min-width: 280px;
+}
+
+.section_4 > section > div {
+  margin-bottom: 3rem;
+}
+
+.section_4 > section h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+.section_4 figure {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  justify-content: center;
 }
 
 .section_4 img {
   border-top-right-radius: 5rem;
   padding: 2rem;
+  max-width: 100%;
+  height: auto;
+  width: clamp(300px, 40vw, 400px);
 }
 
-/* ANIMATION CODE  animation: name duration timing-function delay iteration-count direction fill-mode;*/
+/* ANIMATION CODE */
 
 .animation1 {
   animation: headphone 2s ease 1s 1 normal forwards;
-  position: absolute;
-  left: 50%;
-  bottom: 20%;
 }
 
 @keyframes headphone {
@@ -128,35 +238,33 @@ button:hover {
 
 .animation2 {
   animation: slideup 2s ease 0s 1 normal forwards;
+  opacity: 0;
 }
 
 @keyframes slideup {
   0% {
-    position: absolute;
-    bottom: -3rem;
-    left: 10%;
+    opacity: 0;
+    transform: translateY(50px);
   }
   100% {
-    position: absolute;
-    bottom: 50%;
-    left: 10%;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .animation3 {
-  animation: button 2s ease 0s 1 normal forwards;
+  animation: button 2s ease 0.5s 1 normal forwards;
+  opacity: 0;
 }
 
 @keyframes button {
   0% {
-    position: absolute;
-    bottom: -6rem;
-    left: 7%;
+    opacity: 0;
+    transform: translateY(30px);
   }
   100% {
-    position: absolute;
-    bottom: 30%;
-    left: 7%;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -166,11 +274,68 @@ button:hover {
 
 @keyframes slide {
   0% {
-    position: relative;
-    bottom: -3rem;
+    transform: translateY(30px);
+    opacity: 0;
   }
   100% {
-    position: relative;
-    bottom: 1rem;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Media Queries for better control */
+
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .section_1,
+  .section_2,
+  .section_4 {
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .section_3_categories {
+    gap: 1.5rem;
+  }
+
+  .categories figure {
+    min-height: 350px;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    margin: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .section_1 {
+    gap: 1rem;
+  }
+
+  .categories figure img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .categories figcaption {
+    margin-top: 170px;
+  }
+
+  .categories figure {
+    min-height: 320px;
+    padding: 1.5rem;
   }
 }
